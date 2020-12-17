@@ -18,6 +18,7 @@ module.exports = (() => {
             fs.readdir(modelsPath, (err, files) => {
                 files.forEach((file) => {
                     const [model] = file.split('.');
+                    // eslint-disable-next-line import/no-dynamic-require
                     const modelFile = require(path.join(modelsPath, model));
                     models[model] = modelFile(client, DataTypes);
                 });

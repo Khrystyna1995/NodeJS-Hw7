@@ -1,4 +1,6 @@
-const { OK, CREATED, NO_CONTENT, BAD_REQUEST, FORBIDDEN } = require('../configs/error-codes');
+const {
+    OK, CREATED, NO_CONTENT, BAD_REQUEST, FORBIDDEN
+} = require('../configs/error-codes');
 
 module.exports = {
     NOT_VALID_ID: {
@@ -46,10 +48,9 @@ module.exports = {
         message: 'This user is not exist',
         code: NO_CONTENT
     },
-    WRONG_DATA:{
+    WRONG_DATA: {
         message: 'Wrong password',
         code: BAD_REQUEST
     }
-
 
 };

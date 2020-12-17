@@ -1,9 +1,9 @@
-const { usersController }  = require("../../controllers");
 const { Router } = require('express');
+const { usersController } = require('../../controllers');
+const { usersMiddleware } = require('../../middlewares');
 
 const usersRouter = Router();
 
-usersRouter.get('/', usersController.getUsers);
-
+usersRouter.get('/', usersMiddleware.checkIsUserRegistered, usersController.getUsers);
 
 module.exports = usersRouter;

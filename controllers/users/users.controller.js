@@ -1,4 +1,4 @@
-const { usersService } = require("../../services");
+const { usersService } = require('../../services');
 
 module.exports = {
     getUsers: async (req, res, next) => {
@@ -9,6 +9,5 @@ module.exports = {
         } catch (e) {
             next(e);
         }
-
     },
 };
