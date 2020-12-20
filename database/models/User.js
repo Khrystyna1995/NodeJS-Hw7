@@ -23,7 +23,6 @@ module.exports = (client, DataTypes) => {
         {
             tableName: 'users',
             timestamps: false
-        }
-    );
+        });
     return User;
 };

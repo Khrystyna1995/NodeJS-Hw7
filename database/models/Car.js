@@ -2,7 +2,7 @@ module.exports = (client, DataTypes) => {
     const Car = client.define(
         'Car',
         {
-            idCar: {
+            id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
@@ -11,14 +11,19 @@ module.exports = (client, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            year: {
-                type: DataTypes.INTEGER,
-                allowNull: false
-            },
             users_id: {
                 type: DataTypes.INTEGER,
                 foreignKey: true,
-                allowNull: false
+                allowNull: true,
+                onDelete: 'cascade',
+                onUpdate: 'cascade',
+                reference: {
+                    model: {
+                        tableName: 'users',
+                        schema: 'auto_shop'
+                    },
+                    key: 'id'
+                }
             }
         },
         {
@@ -26,15 +31,6 @@ module.exports = (client, DataTypes) => {
             timestamps: false
         }
     );
-
-    const User = require('./User')(client, DataTypes);
-
-    Car.belongsTo(User, {
-        foreignKey: 'users_id',
-        as: 'user',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-    });
 
     return Car;
 };
