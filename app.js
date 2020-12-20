@@ -11,9 +11,15 @@ app.use(express.json());
 
 app.use(express.static(path.join(process.cwd(), 'views')));
 
-const { usersRouter } = require('./routes');
+const { usersRouter, carsRouter } = require('./routes');
 
+// USERS
 app.use('/users', usersRouter);
+
+// CARS
+app.use('/cars', carsRouter);
+
+// app.use('/auth', authRouter);
 
 app.use('*', (err, req, res, next) => {
     res

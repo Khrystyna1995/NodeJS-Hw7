@@ -30,11 +30,11 @@ module.exports = {
     },
     DELETED_USER: {
         message: 'Deleted',
-        code: OK
+        code: NO_CONTENT
     },
     DELETED_CAR: {
         message: 'Deleted',
-        code: OK
+        code: NO_CONTENT
     },
     EXIST_USER: {
         message: 'This user already exist',
@@ -51,6 +51,14 @@ module.exports = {
     WRONG_DATA: {
         message: 'Wrong password',
         code: BAD_REQUEST
+    },
+    NOT_VALID_TOKEN: {
+        message: 'Not valid token',
+        code: FORBIDDEN
+    },
+    PERMISSION_DENIED: {
+        message: 'Permission denied',
+        code: FORBIDDEN
     }
 
 };
