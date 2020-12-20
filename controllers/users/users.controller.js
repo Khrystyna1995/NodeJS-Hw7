@@ -31,7 +31,7 @@ module.exports = {
 
     getUserByIdWithCar: async (req, res, next) => {
         try {
-            const userWithCar = await usersService.getUserByIdWithCar(req.user_id);
+            const userWithCar = await usersService.getUserByIdWithCar(req.userId);
 
             res.status(OK).json(userWithCar);
         } catch (e) {
@@ -53,12 +53,12 @@ module.exports = {
         try {
             const password = await hash(req.body.password);
 
-            const { name, age, email } = req.body;
+            const { name, email } = req.body;
             const user = { ...req.body, password };
 
             await usersService.createUser(user);
 
-            res.status(CREATED.code).json({ name, age, email });
+            res.status(CREATED.code).json({ name, email });
         } catch (e) {
             next(e);
         }
@@ -66,18 +66,9 @@ module.exports = {
 
     updateUser: async (req, res, next) => {
         try {
-            let password;
-            if (req.body.password) {
-                password = await hash(req.body.password);
-                req.body.password = password;
-            }
+            await usersService.updateUser(req.body, req.params.id);
 
-            const { name, age, email } = req.body;
-            const user = { ...req.body };
-
-            await usersService.updateUser(user);
-
-            res.status(OK.code).json({ name, age, email });
+            res.status(OK).json('User updated');
         } catch (e) {
             next(e);
         }
