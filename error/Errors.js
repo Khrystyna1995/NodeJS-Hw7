@@ -1,5 +1,5 @@
 const {
-    OK, CREATED, NO_CONTENT, BAD_REQUEST, FORBIDDEN
+    OK, CREATED, NO_CONTENT, BAD_REQUEST, FORBIDDEN, UNAUTHORIZED
 } = require('../configs/error-codes');
 
 module.exports = {
@@ -54,7 +54,7 @@ module.exports = {
     },
     NOT_VALID_TOKEN: {
         message: 'Not valid token',
-        code: FORBIDDEN
+        code: UNAUTHORIZED
     },
     PERMISSION_DENIED: {
         message: 'Permission denied',

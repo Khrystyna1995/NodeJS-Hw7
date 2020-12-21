@@ -15,6 +15,8 @@ module.exports = {
             if (!user) {
                 throw new ErrorHandler(NOT_EXIST_USER.message, NOT_EXIST_USER.code);
             }
+
+            req.user = user;
         } catch (e) {
             next(e);
         }
