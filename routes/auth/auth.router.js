@@ -7,6 +7,7 @@ const authRouter = Router();
 authRouter.post('/', authMiddleware.checkUserValid,
     authMiddleware.checkUserExist, authMiddleware.checkPasswordHash,
     authController.authUser);
+authRouter.post('/logout', authController.logoutUser);
 authRouter.post('/refresh', authMiddleware.checkRefreshToken, authController.refreshToken);
 
 module.exports = authRouter;

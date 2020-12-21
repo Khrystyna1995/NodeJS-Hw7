@@ -27,12 +27,12 @@ module.exports = {
         });
     },
 
-    deleteToken: (id) => {
+    deleteToken: (access_token) => {
         const AuthModel = database.getModel('O_Auth');
 
         return AuthModel.destroy({
             where:
-                { id }
+                { access_token }
         });
     }
 

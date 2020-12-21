@@ -1,6 +1,6 @@
 const { authService } = require('../../services');
 const tokenizer = require('../../helpers');
-const { OK } = require('../../configs/error-codes');
+const { OK, NO_CONTENT } = require('../../configs/error-codes');
 
 module.exports = {
     authUser: async (req, res, next) => {
@@ -11,6 +11,18 @@ module.exports = {
             await authService.createTokenPair({ userId: id, ...token_pair });
 
             res.status(OK).json(token_pair);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    logoutUser: async (req, res, next) => {
+        try {
+            const { access_token } = req;
+
+            await authService.deleteToken(access_token);
+
+            res.status(NO_CONTENT);
         } catch (e) {
             next(e);
         }

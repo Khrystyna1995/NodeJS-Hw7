@@ -6,7 +6,7 @@ const usersRouter = Router();
 
 usersRouter.get('/', usersController.getUsers);
 usersRouter.get('/:userId', validationMiddleware.checkUserIdValid, usersController.getUserById);
-usersRouter.get('/userCar', usersController.getUserByIdWithCar);
+usersRouter.get('/:userId/userCar', usersController.getUserByIdWithCar);
 usersRouter.get('/usersCars', usersController.getUsersWithCars);
 
 usersRouter.post('/', validationMiddleware.checkUserValid, usersMiddleware.checkIsUserRegistered, usersController.createUser);
